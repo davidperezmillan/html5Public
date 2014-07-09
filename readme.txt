@@ -1,4 +1,4 @@
-Manual para el envio del repositorio a GitHub
+## Manual para el envio del repositorio a GitHub
 
 Add a git remote in the Cloud9 console. Should look like this (replace the git url with your repo url): 
     git remote add origin git@github.com:davidperezmillan/html5Public.git
