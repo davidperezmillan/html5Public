@@ -6,6 +6,10 @@ Add a git remote in the Cloud9 console. Should look like this (replace the git u
 Add files and commit them:
     git add . 
     git commit -m "First commit"
+    
+    or
+    
+    git commit -am "Add REDME.md" Añade y comitea los cambios ()
 
 Push to github: 
-    git push -u origin master
+    git push [-u origin master]
