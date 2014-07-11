@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<script src="js/jquery-1.8.2.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#noticias').html("Alguna noticia");
+ 				// $('.cliceable').click(function (){
+					// $(this).html("clieado");
+				// });
+				// $('.cliceable').mousedown(
+					// function(){
+						// $(this).html("Fuera");
+					// }
+				// );
+
+
+				// $('.cliceable').hover(
+				  // function() {
+					// $(this).append( $( "<span> -></span>" ) );
+				  // }, function() {
+					// $(this).find( "span:last" ).remove();
+				  // }
+				// );
+				
+				
+				$('.cliceable').mousedown(function(){
+					$(this).html("Bind an event handler to the “mousedown” JavaScript event, or trigger that event on an element.");
+				});
+
+				$('.cliceable').mouseenter(function(){
+					$(this).html("Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element.");
+				});
+				$('.cliceable').mouseleave(function(){
+					$(this).html("Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.");
+				});
+				$('.cliceable').mousemove(function(){
+					$(this).html("Bind an event handler to the “mousemove” JavaScript event, or trigger that event on an element.");
+				});
+				
+				$('.cliceable').mouseout(function(){
+					$(this).html("Bind an event handler to the “mouseout” JavaScript event, or trigger that event on an element.");
+				});
+				$('.cliceable').mouseover(function(){
+					$(this).html("Bind an event handler to the “mouseover” JavaScript event, or trigger that event on an element.");
+				});
+				$('.cliceable').mouseup(function(){
+					$(this).html("Bind an event handler to the “mouseup” JavaScript event, or trigger that event on an element.");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="noticias" class="cliceable"></div>
+<!--		<div class="cliceable">Mas Noticias</div> -->
+<!--		<div class="cliceable">Muchas Mas Noticias</div> -->
+	</body>
+</html>
+

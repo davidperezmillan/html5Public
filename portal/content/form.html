@@ -1,0 +1,70 @@
+
+<style>input{display:block; width: 300px}</style>
+
+<style type="text/css"> 
+	input:required:invalid { 
+		background-image: url(css/images/invalid.png); 
+		background-position: right top; 
+		background-repeat: no-repeat; 
+	} 
+	input:focus:invalid { 
+		background-image: url(css/images/novalid.png); 
+		background-position: right top; 
+		background-repeat: no-repeat; 
+	} 
+	input:required:valid { 
+		background-image: url(css/images/valid.png); 
+		background-position: right top; 
+		background-repeat: no-repeat; 
+	}
+	
+	
+	#html5data li{
+		color: blue;
+	}
+	#html5data li[data-sexo='F'] {
+		color: magenta;
+	}
+	#html5data li:after {
+		content: ' (comics: ' attr(data-comics) ')';
+		color: #999;
+	}
+</style>
+
+<form action="">
+	<label for="name">Your Name:</label>
+	<input type="text" name="name" required>
+
+ 
+	Email Address: <input type="email" name="email" required placeholder="Enter a valid email address">
+ 
+ 
+	Website: <input type="url" name="website" required>
+ 
+	Website https: <input type="url" name="website" required pattern="https?://.+">
+ 
+ 
+	Age: <input type="number" size="6" name="age" min="18" max="99" value="21"><br>
+	Satisfaction: <input type="range" size="2" name="satisfaction" min="1" max="5" value="3">
+</form>
+
+<div id="html5data">
+
+	<li id="marvel-1" data-comics="1423" data-sexo="M">Capitán América</li>
+	<li id="marvel-2" data-comics="321" data-sexo="F">Capitana Marvel</li>
+	<li id="marvel-3" data-comics="2575" data-sexo="M">Spider Man</li>
+
+	<script type="text/javascript">
+		autoincrementar(document.getElementById("marvel-1"));
+		autoincrementar(document.getElementById("marvel-2"));
+		autoincrementar(document.getElementById("marvel-3"));
+		  
+		function autoincrementar(elemento){ 
+			elemento.addEventListener('click', function(){
+				elemento.dataset.comics++;
+			}, false);
+		}
+
+	</script>
+
+</div>

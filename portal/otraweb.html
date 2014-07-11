@@ -1,0 +1,120 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<script src="js/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="js/aefunction.js"></script>
+		<script type="text/javascript" src="alertify/lib/alertify.js"></script>
+		<link rel="stylesheet" href="alertify/themes/alertify.core.css" />
+		<link rel="stylesheet" href="alertify/themes/alertify.default.css" />
+		<style type="text/css">
+		span.hilite {
+			color: grey;
+		}
+
+		#menu_horizontal li{
+			display: block;
+		}
+		
+		.menu{}
+		.menu .dinamico {
+			padding:0;margin:0;
+		}
+		.menu .dinamico li{
+			padding:0;margin:0;
+			padding-left:5%;
+			list-style-type: none;
+		}
+		</style>
+	</head>
+	<body>
+	
+	
+	
+	<ul id="menu_horizontal">
+	<span id="enl" onclick="">enlace</span>
+		<li>
+		<div class="menu">
+			<span>Opcion</span> 
+			<ul class="dinamico">
+				<li><a href="#">Panel dinamico 1</a></li>
+				<li><a href="#">Panel dinamico 2</a></li>
+				<li><a href="#" class="prompt">Panel dinamico 2</a></span></li>
+			</ul>
+		</div>
+		</li>
+		<li>
+		<div class="menu">
+			<span>Opcion</span> 
+				<div class="dinamico">
+					<ul class="dinamico">
+						<li>Panel dinamico 1</li>
+						<li>Panel dinamico 2</li>
+					</ul>
+				</div>
+		</div>
+		</li>
+		<li>
+			<div class="menu">
+			<span>Opcion</span> 
+				<ul class="dinamico">
+					<li>
+						<span>Panel dinamico 1<span>
+						<ul>
+							<li>Opcion 2 1<li>
+							<li>Opcion 2 2<li>
+							<li>Opcion 2 3<li>
+						</ul>
+					</li>
+					<li>Panel dinamico 2</li>
+				</ul>
+		</div>
+		</li>
+	</ul>
+	
+	<script type="text/javascript">
+	
+	
+		$(document).ready(function() {
+			$('.dinamico').fadeOut();
+			
+		});
+	
+		$('.menu span').click(function (){
+			$(this).parent('.menu').find('.dinamico').toggle(500);
+		});
+		$( "span" ).hover(function() {
+		  $( this ).addClass( "hilite" );
+		}, function() {
+		  $( this ).removeClass( "hilite" );
+		});
+		
+		
+		$('.notify').click(function (){
+			alertify.log($(this).val()); 
+			return false;
+		});
+		
+		$('.prompt').click(function(){
+				//un prompt
+				alertify.
+				alertify.prompt($(this).html(), function (e, str) { 
+					if (e){
+						alertify.success("Has pulsado '" + alertify.labels.ok + "'' e introducido: " + str);
+					}else{
+						alertify.error("Has pulsado '" + alertify.labels.cancel + "'");
+					}
+				});
+				return false;
+		});
+		
+		
+		$("#enl").click(function(){
+			//aef.alerta(aef.d(this));
+			aef.alerta(document.getElementById(this)," Estamos ");
+		});
+		
+
+
+	</script>
+	</body>
+</html>

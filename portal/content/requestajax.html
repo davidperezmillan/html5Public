@@ -1,0 +1,60 @@
+<script>
+	
+	$(document).ready(function() {
+	
+		$("#btn_ajax").click(function() {
+		
+			 $('#respuesta').html('<p style="margin: 20px"><img src="css/images/loading_trasparent.gif"></p>');
+		
+			var dato = {};
+			if (document.getElementById("idcod").value)
+				dato = {id:document.getElementById("idcod").value};
+			$.ajax({
+				type: "POST",
+				url: "../services/Opciones.php",
+				dataType: "json",
+				data: dato
+			}).done(function( obj ) {
+				console.dir(obj);
+				$("#respuesta").html(montarRespuesta(obj));
+			}).fail(function(err) {
+				alert("ERROR : " + err.status + " -- " + err.statusText);
+			});
+		});
+	});
+	
+	
+	function montarRespuesta(data){
+		if (Array.isArray(data)){
+			return montarRespuestaArray(data);
+		}else{
+			var respuesta= "";
+			respuesta += '<ul>';
+				//respuesta += '<li>'+data.id+'</li>';
+				respuesta += '<li>'+data.nombre+'</li>';
+				respuesta += '<li>'+data.categoria+'</li>';
+				respuesta += '<li>'+data.precioDeSalida+'</li>';
+				respuesta += '<li>'+data.detalles+'</li>';
+			respuesta += '</ul>'
+		}
+		return respuesta;		
+	}
+	
+	function montarRespuestaArray(data){
+		var respuesta= "";
+		
+		respuesta += '<ul>';
+		for (var i = 0; i<data.length; i++){
+			respuesta += '<li>'+data[i].nombre+'_'+data[i].id+'</li>';
+		}
+		respuesta += '</ul>'
+		return respuesta;		
+	}
+	
+</script>
+
+<img src="css/images/teclado.jpg"/>
+
+ID: <input type="text" id="idcod" value=""/>
+<input type="button" id="btn_ajax" value="Realizar peticion"/>
+<div id="respuesta"></div>

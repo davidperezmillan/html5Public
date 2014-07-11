@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<script src="js/jquery-1.8.2.min.js"></script>
+
+	</head>
+	<body>
+	<input type="text" id="idlinea" value=""> 
+	<a id="btnBuscar">Pet</a>
+	<div id="respuesta" style="border: solid red 1px; display: none; visibility: hidden;"></div>
+	<div id="lista">
+		<ul></ul>
+	</div>	
+	
+		<script>
+			$("#btnBuscar").click(function (){
+				$("#lista ul").html("");
+				var bla = $('#idlinea').val();
+				var dato = {};
+				$.ajax({
+					type: "POST",
+					url: bla,
+					dataType: "html",
+					data: dato
+				}).done(function( obj ) {
+					console.dir(obj);
+					$("#respuesta").html(obj);
+					$("img").each(function (index) {
+						$("#lista ul").append("<li><a href='/"+$(this).attr("src")+"'>"+$(this).attr("src")+"</a></li>");
+					});
+				}).fail(function(err) {
+					console.dir(err);
+					alert("ERROR : " + err);
+				});
+			});
+		</script>
+	
+	</body>
+</html>
